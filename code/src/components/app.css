@@ -1,0 +1,26 @@
+.App {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 400px;
+  border-style: solid;
+  margin: 100px
+}
+
+.vat-rates {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 50px;
+  border-bottom: solid;
+  justify-content: space-around;
+  align-items: center;
+}
+
+label {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px 10px;
+}

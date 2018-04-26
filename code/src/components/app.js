@@ -1,5 +1,6 @@
 import React from "react"
 import { exVatToIncVat, incVatToExtVat } from "../calculations"
+import "./app.css"
 
 class App extends React.Component {
 
@@ -14,7 +15,7 @@ class App extends React.Component {
 
   handleIncVatChange = (event) => {
     // Input: value from inc vat field
-    // Output: remebber the inc vat state,
+    // Output: remember the inc vat state,
     // and calc & set ex vat
     const incVatNumber = parseInt(event.target.value)
     this.setState({
@@ -36,7 +37,7 @@ class App extends React.Component {
     const vatRateNumber = parseInt(event.target.value)
     this.setState({
       vatRate: vatRateNumber,
-      incVat: 0,
+      incVat: null,
       exVat: 0
     })
   }
@@ -44,7 +45,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div>
+        <div className="vat-rates">
+          <p>Momssats:</p>
           <label>
           25%
             <input
@@ -73,32 +75,34 @@ class App extends React.Component {
           </label>
         </div>
 
-        <label>
-          Inklusive moms (kr)
-          <input
-            name="incVat"
-            onChange={this.handleIncVatChange}
-            value={this.state.incVat}
-            type="number" />
-        </label>
+        <div>
+          <label>
+            Inklusive moms (kr)
+            <input
+              name="incVat"
+              onChange={this.handleIncVatChange}
+              value={this.state.incVat}
+              type="number" />
+          </label>
 
-        <label>
-          Exclusive moms (kr)
-          <input
-            name="exVat"
-            onChange={this.handleExVatChange}
-            value={this.state.exVat}
-            type="number" />
-        </label>
-
-        <label>
+          <label>
+            Exclusive moms (kr)
+            <input
+              name="exVat"
+              onChange={this.handleExVatChange}
+              value={this.state.exVat}
+              type="number" />
+          </label>
+          <label>
             Momssumma
 
-          <input
-            name="sum"
-            value={this.state.incVat - this.state.exVat}
-            type="text" />
-        </label>
+            <input
+              placeholder=""
+              name="sum"
+              value={(this.state.incVat - this.state.exVat).toFixed(2)}
+              type="text" />
+          </label>
+        </div>
       </div>
     )
   }
